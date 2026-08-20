@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 300" width="100%" height="100%">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+            .logo-b {
+                font-family: 'Outfit', 'Plus Jakarta Sans', 'Arial Black', sans-serif;
+                font-weight: 900;
+                font-style: italic;
+                font-size: 110px;
+                fill: #FFFFFF;
+            }
+            .logo-uona {
+                font-family: 'Outfit', 'Plus Jakarta Sans', 'Arial Black', sans-serif;
+                font-weight: 900;
+                font-size: 82px;
+                fill: #22C55E;
+                letter-spacing: -2px;
+            }
+            .logo-pastelaria-text {
+                font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                font-weight: 900;
+                font-size: 27px;
+                fill: #FFFFFF;
+                letter-spacing: 3px;
+            }
+        </style>
+        <filter id="logoShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.3)" />
+        </filter>
+    </defs>
+
+    <!-- Red Brand Background (Official Buona Red) -->
+    <rect width="340" height="300" rx="32" fill="#CB2027" />
+
+    <g transform="translate(20, 30)">
+        <!-- PASTEL FAN GRAPHIC ON LEFT -->
+        <g transform="translate(10, 40) rotate(-14)">
+            <!-- Fan Base Shell -->
+            <path d="M 20 115 
+                     C 10 90, 10 50, 35 25 
+                     C 60 5, 100 0, 115 5 
+                     L 85 120 Z" 
+                  fill="#F59E0B" stroke="#D97706" stroke-width="2.5" />
+            
+            <!-- Radiating Crimp Lines along edge -->
+            <line x1="85" y1="120" x2="22" y2="105" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="85" y1="120" x2="24" y2="85" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="85" y1="120" x2="30" y2="65" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="85" y1="120" x2="45" y2="45" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="85" y1="120" x2="68" y2="28" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+            <line x1="85" y1="120" x2="95" y2="15" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+
+            <!-- Edge notched fringe border -->
+            <path d="M 20 115 Q 16 102 24 95 Q 18 84 30 75 Q 26 62 42 50 Q 45 35 68 25 Q 75 12 105 8 L 115 5" 
+                  fill="none" stroke="#B45309" stroke-width="3" stroke-linecap="round" />
+        </g>
+
+        <!-- BRAND NAME: "Buona" -->
+        <!-- White Stylized Italic "B" over pastel -->
+        <text x="35" y="145" class="logo-b" filter="url(#logoShadow)">B</text>
+
+        <!-- Vibrant Green "uona" -->
+        <text x="105" y="142" class="logo-uona">uona</text>
+
+        <!-- HORIZONTAL ORANGE UNDERLINE BAR -->
+        <rect x="30" y="156" width="245" height="8" rx="4" fill="#EA580C" />
+
+        <!-- GREEN CAPSULE BADGE WITH "PASTELARIA" -->
+        <rect x="26" y="174" width="253" height="38" rx="19" fill="#16A34A" />
+        <text x="152" y="202" text-anchor="middle" class="logo-pastelaria-text">PASTELARIA</text>
+    </g>
+</svg>

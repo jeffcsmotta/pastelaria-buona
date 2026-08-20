@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minuta de Contrato | Buona Pastelaria & Onira Labs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 16px;
+        }
+        .contract-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+        }
+        .contract-header {
+            text-align: center;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+        .contract-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0F172A;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .contract-sub {
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+        .clause-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            border-left: 4px solid #EA580C;
+            padding-left: 10px;
+        }
+        p, li {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 12px;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px dashed #CBD5E1;
+        }
+        .signature-box {
+            text-align: center;
+        }
+        .signature-line {
+            border-top: 1px solid #0F172A;
+            margin-bottom: 8px;
+        }
+        .btn-print {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0F172A;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            cursor: pointer;
+            border: none;
+        }
+        @media print {
+            body { padding: 0; background: #FFF; }
+            .contract-container { box-shadow: none; border: none; padding: 0; }
+            .btn-print, .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contract-container">
+        <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a href="proposta.html" style="color: #EA580C; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+                <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Voltar à Proposta
+            </a>
+            <button class="btn-print" onclick="window.print()">
+                <i data-lucide="printer" style="width: 16px; height: 16px;"></i> Imprimir / Salvar PDF
+            </button>
+        </div>
+
+        <div class="contract-header">
+            <h1 class="contract-title">Instrumento Particular de Prestação de Serviços de Software & Presença Digital</h1>
+            <div class="contract-sub">Canal Próprio Onira Flow • Buona Pastelaria & Onira Labs</div>
+        </div>
+
+        <p>Pelo presente instrumento particular, de um lado:</p>
+
+        <p>
+            <strong>CONTRATADA:</strong> <strong>ONIRA LABS TECNOLOGIA & DESIGN</strong>, sediada em Caxias do Sul - RS, neste ato representada por Jeff Motta.<br>
+            <strong>CONTRATANTE:</strong> <strong>BUONA PASTELARIA LTDA</strong>, pessoa jurídica de direito privado, inscrita no CNPJ sob nº <strong>30.637.779/0001-11</strong>, com sede na Rua Bento Gonçalves, 880 (esquina com Rua Vereador Mário Pezzi), Centro, Caxias do Sul - RS, CEP 95020-412, neste ato representada por seus sócios-administradores <strong>Volnei Dorizete Ramos Pacheco / Vanda de Oliveira</strong>.
+        </p>
+
+        <h2 class="clause-title">CLÁUSULA 1ª — DO OBJETO</h2>
+        <p>A CONTRATADA prestará à CONTRATANTE os serviços especializados de tecnologia, design e desenvolvimento web, compreendendo:</p>
+        <ul>
+            <li>Desenvolvimento e implantação da plataforma digital web própria (Onira Flow) com cardápio interativo e checkout direto no WhatsApp.</li>
+            <li>Integração de chave Pix oficial da empresa para recebimento ágil sem intermediação de terceiros.</li>
+            <li>Configuração e publicação sob o domínio oficial <code>buonapastelaria.com.br</code>.</li>
+            <li>Hospedagem em nuvem de alta velocidade, certificado de segurança SSL HTTPS e suporte contínuo para atualização de itens e preços.</li>
+        </ul>
+
+        <h2 class="clause-title">CLÁUSULA 2ª — DOS VALORES E FORMAS DE PAGAMENTO</h2>
+        <p>Pela prestação dos serviços de implantação, desenvolvimento e suporte contínuo, a CONTRATANTE pagará:</p>
+        <ul>
+            <li><strong>Taxa de Setup e Desenvolvimento:</strong> O valor total de <strong>R$ 1.500,00 (Um mil e quinhentos reais)</strong>, pago em 50% de entrada no aceite (R$ 750,00) e 50% na entrega e publicação oficial no domínio (R$ 750,00).</li>
+            <li><strong>Mensalidade de Manutenção & Servidor Nuvem:</strong> <strong>R$ 100,00/mês</strong>, com vencimento a cada 30 dias após a publicação do canal.</li>
+        </ul>
+
+        <h2 class="clause-title">CLÁUSULA 3ª — DA TITULARIDADE DO DOMÍNIO</h2>
+        <p>O domínio <code>buonapastelaria.com.br</code> é registrado e mantido sob a titularidade exclusiva e intransferível do CNPJ da CONTRATANTE perante o Registro.br, atuando a CONTRATADA como administradora técnica.</p>
+
+        <h2 class="clause-title">CLÁUSULA 4ª — DO PRAZO E RESCISÃO</h2>
+        <p>O presente contrato tem prazo de vigência indeterminado para o serviço de hospedagem e manutenção contínua, podendo ser cancelado por qualquer das partes mediante aviso prévio de 30 (trinta) dias, sem incidência de multas rescisórias abusivas.</p>
+
+        <h2 class="clause-title">CLÁUSULA 5ª — DO FORO</h2>
+        <p>Para dirimir quaisquer controvérsias oriundas deste instrumento, as partes elegem o Foro da Comarca de Caxias do Sul - RS.</p>
+
+        <div class="signature-grid">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <strong>ONIRA LABS TECNOLOGIA</strong><br>
+                <span style="font-size: 0.85rem; color: #64748B;">Jeff Motta • Diretor Técnico</span>
+            </div>
+
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <strong>BUONA PASTELARIA LTDA</strong><br>
+                <span style="font-size: 0.85rem; color: #64748B;">CNPJ: 30.637.779/0001-11</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

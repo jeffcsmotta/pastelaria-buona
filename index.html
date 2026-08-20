@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Buona Pastelaria Artesanal | Pastéis Crocantes no Centro de Caxias do Sul</title>
+    <meta name="description" content="🥟 Buona Pastelaria — Os pastéis artesanais mais crocantes e recheados do Centro de Caxias do Sul! Pastéis tradicionais, especiais gaúchos, doces gourmet e caldo de cana geladinho. Rua Bento Gonçalves, 880. Delivery rápido!">
+    <meta name="keywords" content="Pastelaria Caxias do Sul, Buona Pastelaria, Pastel Centro Caxias do Sul, Delivery Pastel Caxias, Caldo de Cana Caxias do Sul, Rua Bento Gonçalves 880, Pastel Artesanal Serra Gaúcha">
+
+    <!-- PWA Manifest & Icons -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0B0C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Buona Pastel">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Critical Inline CSS for Instant Splash Screen -->
+    <style>
+        .pwa-splash {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 9999999 !important;
+            background: radial-gradient(circle at center, #1E293B 0%, #0B0F17 100%) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s !important;
+            backdrop-filter: blur(20px) !important;
+        }
+        .pwa-splash.fade-out {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+        .splash-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .splash-logo-wrap {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .splash-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            animation: splashPop 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            filter: drop-shadow(0 10px 25px rgba(234, 88, 12, 0.6));
+        }
+        .splash-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(234, 88, 12, 0.5) 0%, rgba(234, 88, 12, 0) 70%);
+            border-radius: 50%;
+            animation: glowPulse 1.5s infinite alternate;
+            z-index: 1;
+        }
+        @keyframes splashPop {
+            0% { transform: scale(0.2) rotate(-15deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(4deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        @keyframes glowPulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.4); opacity: 1; }
+        }
+        .splash-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        .splash-subtitle {
+            font-size: 0.95rem;
+            color: #EA580C;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .splash-loader {
+            display: flex;
+            gap: 8px;
+        }
+        .splash-dot {
+            width: 10px;
+            height: 10px;
+            background: #EA580C;
+            border-radius: 50%;
+            animation: dotBounce 1.2s infinite ease-in-out both;
+        }
+        .splash-dot:nth-child(1) { animation-delay: -0.32s; }
+        .splash-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes dotBounce {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Splash Screen PWA -->
+    <div id="pwa-splash" class="pwa-splash">
+        <div class="splash-content">
+            <div class="splash-logo-wrap">
+                <div class="splash-glow"></div>
+                <img src="assets/logo.svg" alt="Buona Pastelaria" class="splash-logo">
+            </div>
+            <h2 class="splash-title">BUONA PASTELARIA</h2>
+            <p class="splash-subtitle">🥟 Tradição em Pastéis Artesanais</p>
+            <div class="splash-loader">
+                <div class="splash-dot"></div>
+                <div class="splash-dot"></div>
+                <div class="splash-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 0. TOP ANNOUNCEMENT BAR (DESKTOP) -->
+    <aside class="top-bar" aria-label="Informações de Contato e Horário">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span><i data-lucide="map-pin"></i> Rua Bento Gonçalves, 880 (esq. Mário Pezzi) • Centro, Caxias do Sul</span>
+                <span class="divider">|</span>
+                <span><i data-lucide="clock"></i> Seg a Sáb: 11h às 23h • Dom: 16h às 22h</span>
+            </div>
+            <div class="top-contacts">
+                <a href="https://wa.me/555432083933" target="_blank" class="top-wa"><i data-lucide="message-circle"></i> WhatsApp: (54) 3208-3933</a>
+                <span class="divider">|</span>
+                <a href="proposta.html" style="color: #F59E0B; font-weight: 700;"><i data-lucide="sparkles"></i> Ver Proposta do Site</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HEADER / APP BAR -->
+    <header class="header" id="main-header">
+        <div class="container header-container">
+            <a href="#cardapio" class="logo" aria-label="Buona Pastelaria Início">
+                <img src="assets/logo.svg" alt="Buona Pastelaria" class="brand-logo-img">
+            </a>
+
+            <div class="header-actions">
+                <!-- Status Badge -->
+                <div id="business-status" class="status-badge">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Verificando...</span>
+                </div>
+
+                <!-- Botão Limpar Pedido -->
+                <button class="cart-clear-btn" id="cart-clear-header" onclick="window.clearCart()" title="Esvaziar Carrinho" aria-label="Esvaziar Carrinho" style="display: none;">
+                    <i data-lucide="trash-2"></i>
+                </button>
+
+                <!-- Botão Carrinho -->
+                <button class="cart-toggle-btn" onclick="window.openCart()" aria-label="Abrir Carrinho">
+                    <i data-lucide="shopping-bag"></i>
+                    <span>Pedido</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CARDÁPIO / CATALOG SECTION (LIGHT CONTAINER) -->
+    <main>
+    <section class="section menu-section" id="cardapio">
+        <div class="container">
+            <div class="text-center">
+                <span class="subtitle">CARDÁPIO ARTESANAL</span>
+                <h2 class="title">Escolha Seus Sabores Favoritos</h2>
+                <p class="section-desc">Massa crocante com recheio farto de ponta a ponta. Selecione seu tamanho preferido e monte seu pedido.</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div style="max-width: 540px; margin: 0 auto 28px auto; position: relative;">
+                <i data-lucide="search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: #94A3B8;"></i>
+                <input type="text" id="menu-search-input" placeholder="Buscar por sabor (ex: carne, queijo, morango, caldo de cana)..." style="width: 100%; padding: 13px 16px 13px 46px; border-radius: 9999px; border: 1px solid #E2E8F0; background: #FFFFFF; font-family: inherit; font-size: 0.92rem; outline: none; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: border-color 0.2s;">
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="category-filters-container">
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="todos">
+                        <i data-lucide="grid"></i> Todos os Sabores
+                    </button>
+                    <button class="filter-btn" data-category="salgados">
+                        <i data-lucide="flame"></i> Pastéis Tradicionais
+                    </button>
+                    <button class="filter-btn" data-category="especiais">
+                        <i data-lucide="star"></i> Gourmet & Especiais
+                    </button>
+                    <button class="filter-btn" data-category="doces">
+                        <i data-lucide="heart"></i> Pastéis Doces
+                    </button>
+                    <button class="filter-btn" data-category="porcoes">
+                        <i data-lucide="layers"></i> Porções & Petiscos
+                    </button>
+                    <button class="filter-btn" data-category="bebidas">
+                        <i data-lucide="coffee"></i> Bebidas & Caldo de Cana
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="menu-grid" id="menu-grid">
+                <!-- Dynamically populated via app.js -->
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- 3. ABOUT / STORY SECTION (DARK CONTAINER) -->
+    <section class="section about-section" id="sobre">
+        <div class="container">
+            <div class="about-card">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+                    <div>
+                        <span class="subtitle" style="color: #EA580C;">NOSSA TRADIÇÃO</span>
+                        <h2 class="title" style="color: #FFFFFF; font-size: 2.4rem; margin-bottom: 16px;">
+                            Desde 2018 Servindo o Melhor Pastel de Caxias do Sul
+                        </h2>
+                        <p style="color: #D4D4D8; font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">
+                            Fundada com paixão pela culinária artesanal por <strong>Volnei Pacheco e Vanda de Oliveira</strong>, a <strong>Buona Pastelaria</strong> consolidou-se como referência gastronômica na Serra Gaúcha pela crocância inigualável de sua massa e pela fartura incomparável dos recheios.
+                        </p>
+                        <p style="color: #94A3B8; font-size: 0.98rem; line-height: 1.7; margin-bottom: 28px;">
+                            Localizada em um ponto nobre e histórico no coração de Caxias do Sul — na <strong>Rua Bento Gonçalves, 880 (esquina com a Rua Vereador Mário Pezzi)</strong> —, oferecemos um ambiente acolhedor para a família e um sistema de entrega ágil e quentinho.
+                        </p>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="#cardapio" class="btn btn-primary">
+                                <i data-lucide="shopping-bag"></i> Faça Seu Pedido Agora
+                            </a>
+                            <a href="https://maps.google.com/?q=Buona+Pastelaria+Bento+Goncalves+880+Caxias+do+Sul" target="_blank" class="btn" style="background: rgba(255,255,255,0.08); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.2);">
+                                <i data-lucide="map-pin"></i> Como Chegar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Stat Badges Grid -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; text-align: center;">
+                            <div style="font-size: 2.6rem; font-weight: 900; color: #EA580C; font-family: 'Outfit', sans-serif;">8+</div>
+                            <div style="color: #E2E8F0; font-weight: 700; font-size: 0.95rem; margin-top: 4px;">Anos de Tradição</div>
+                            <div style="color: #94A3B8; font-size: 0.8rem; margin-top: 4px;">Desde 2018 em Caxias</div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; text-align: center;">
+                            <div style="font-size: 2.6rem; font-weight: 900; color: #EA580C; font-family: 'Outfit', sans-serif;">30+</div>
+                            <div style="color: #E2E8F0; font-weight: 700; font-size: 0.95rem; margin-top: 4px;">Sabores Exclusivos</div>
+                            <div style="color: #E2E8F0; font-size: 0.8rem; margin-top: 4px;">Salgados e Doces</div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; text-align: center;">
+                            <div style="font-size: 2.6rem; font-weight: 900; color: #10B981; font-family: 'Outfit', sans-serif;">4.9★</div>
+                            <div style="color: #E2E8F0; font-weight: 700; font-size: 0.95rem; margin-top: 4px;">Avaliação Google</div>
+                            <div style="color: #94A3B8; font-size: 0.8rem; margin-top: 4px;">Clientes Encantados</div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; text-align: center;">
+                            <div style="font-size: 2.6rem; font-weight: 900; color: #38BDF8; font-family: 'Outfit', sans-serif;">100%</div>
+                            <div style="color: #E2E8F0; font-weight: 700; font-size: 0.95rem; margin-top: 4px;">Massa Fresca</div>
+                            <div style="color: #94A3B8; font-size: 0.8rem; margin-top: 4px;">Frita na Hora</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SPECIAL HIGHLIGHT BANNER (DARK CONTAINER) -->
+    <section class="section" style="background: #0D0D10; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 60px 0;">
+        <div class="container">
+            <div style="background: linear-gradient(135deg, rgba(234, 88, 12, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%); border: 1px solid rgba(234, 88, 12, 0.35); border-radius: 24px; padding: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+                <div style="max-width: 600px;">
+                    <span class="card-badge" style="position: static; display: inline-block; margin-bottom: 12px; background: #EA580C; color: #FFFFFF;">COMBO CAMPEÃO DO CENTRO</span>
+                    <h3 style="font-size: 1.8rem; font-weight: 900; color: #FFFFFF; margin-bottom: 8px;">Cesto Misto (12 Unid) + Caldo de Cana Geladinho</h3>
+                    <p style="color: #D4D4D8; font-size: 0.95rem; line-height: 1.6;">Perfeito para compartilhar com amigos ou família! 12 mini pastéis crocantes nos sabores carne, queijo, frango e chocolate com caldo de cana moído na hora.</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" onclick="quickAddToCart('bpo1')" style="padding: 14px 28px; font-size: 1.05rem;">
+                        <i data-lucide="plus-circle"></i> Adicionar Combo ao Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS (DARK CONTAINER) -->
+    <section class="section" style="background: #111115; color: #FFFFFF;">
+        <div class="container">
+            <div class="text-center">
+                <span class="subtitle" style="color: #EA580C;">AVALIAÇÕES REAIS</span>
+                <h2 class="title" style="color: #FFFFFF;">Quem Prova, Vira Fã</h2>
+                <p class="section-desc" style="color: #94A3B8;">Confira o que nossos clientes dizem sobre a experiência gastronômica na Buona Pastelaria.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <div style="background: #18181F; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; gap: 4px; color: #FFC107; margin-bottom: 12px;">
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                        </div>
+                        <p style="color: #D4D4D8; font-size: 0.92rem; font-style: italic; line-height: 1.6; margin-bottom: 16px;">
+                            "Melhor pastel de Caxias do Sul sem dúvidas! A massa é sequinha, crocante e vem muito recheado. O pastel Buona Supremo é espetacular."
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #EA580C; color: #FFFFFF; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.88rem;">MR</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.9rem; color: #FFFFFF;">Marcelo R.</div>
+                            <div style="font-size: 0.76rem; color: #94A3B8;">Cliente Google Maps • Caxias do Sul</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #18181F; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; gap: 4px; color: #FFC107; margin-bottom: 12px;">
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                        </div>
+                        <p style="color: #D4D4D8; font-size: 0.92rem; font-style: italic; line-height: 1.6; margin-bottom: 16px;">
+                            "O novo ponto na Bento Gonçalves ficou maravilhoso, muito espaçoso. O pastel doce de morango com chocolate e o caldo de cana com limão são perfeitos!"
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #F59E0B; color: #000; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.88rem;">CS</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.9rem; color: #FFFFFF;">Camila S.</div>
+                            <div style="font-size: 0.76rem; color: #94A3B8;">Cliente Frequente • Centro</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #18181F; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; gap: 4px; color: #FFC107; margin-bottom: 12px;">
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                            <i data-lucide="star" style="width: 16px; height: 16px; fill: #FFC107;"></i>
+                        </div>
+                        <p style="color: #D4D4D8; font-size: 0.92rem; font-style: italic; line-height: 1.6; margin-bottom: 16px;">
+                            "Entrega rápida e pastel que chega crocante de verdade em casa, sem amolecer. Atendimento nota 10 pelo WhatsApp!"
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #10B981; color: #FFFFFF; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.88rem;">GS</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 0.9rem; color: #FFFFFF;">Gabriel Silva</div>
+                            <div style="font-size: 0.76rem; color: #94A3B8;">Delivery • Caxias do Sul</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. LOCATION & CONTACT (LIGHT CONTAINER) -->
+    <section class="section" id="contato" style="background: #FAFAFC;">
+        <div class="container">
+            <div class="text-center">
+                <span class="subtitle">ONDE ESTAMOS</span>
+                <h2 class="title">Visite Nosso Ponto no Centro</h2>
+                <p class="section-desc">Ambiente acolhedor no coração de Caxias do Sul ou peça pelo delivery para receber quentinho.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: start;">
+                <!-- Information Card -->
+                <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                        <div style="width: 44px; height: 44px; background: rgba(234, 88, 12, 0.12); color: #EA580C; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 4px;">Endereço Oficial</h3>
+                            <p style="color: #64748B; font-size: 0.92rem; line-height: 1.5;">
+                                Rua Bento Gonçalves, 880 (esquina com Rua Vereador Mário Pezzi)<br>
+                                Centro, Caxias do Sul - RS<br>
+                                CEP: 95020-412
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                        <div style="width: 44px; height: 44px; background: rgba(16, 185, 129, 0.12); color: #10B981; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="phone-call"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 4px;">Telefone & WhatsApp</h3>
+                            <p style="color: #64748B; font-size: 0.92rem;">
+                                <strong>(54) 3208-3933</strong> (Atendimento & Tele-entrega)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+                        <div style="width: 44px; height: 44px; background: rgba(56, 189, 248, 0.12); color: #0284C7; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin-bottom: 4px;">Horários de Atendimento</h3>
+                            <p style="color: #64748B; font-size: 0.92rem; line-height: 1.5;">
+                                <strong>Segunda a Quinta:</strong> 11:00 às 22:00<br>
+                                <strong>Sexta e Sábado:</strong> 11:00 às 23:00<br>
+                                <strong>Domingo:</strong> 16:00 às 22:00
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="https://maps.google.com/?q=Buona+Pastelaria+Bento+Goncalves+880+Caxias+do+Sul" target="_blank" class="btn btn-primary" style="flex: 1; min-width: 180px; justify-content: center;">
+                            <i data-lucide="navigation"></i> Abrir Google Maps
+                        </a>
+                        <a href="https://wa.me/555432083933" target="_blank" class="btn btn-primary" style="flex: 1; min-width: 180px; justify-content: center;">
+                            <i data-lucide="message-circle"></i> Chamar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Interactive Embed -->
+                <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 20px; overflow: hidden; height: 400px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <iframe 
+                        title="Localização Buona Pastelaria" 
+                        src="https://maps.google.com/maps?q=Buona+Pastelaria+Rua+Bento+Goncalves+880+Caxias+do+Sul&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (DARK CONTAINER) -->
+    <footer style="background: #09090B; color: #94A3B8; border-top: 1px solid rgba(255,255,255,0.08); padding: 50px 0 30px 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 36px; margin-bottom: 40px;">
+                <div>
+                    <img src="assets/logo.svg" alt="Buona Pastelaria" class="brand-logo-footer" style="height: 52px; width: auto; margin-bottom: 16px;">
+                    <p style="color: #94A3B8; font-size: 0.88rem; line-height: 1.6;">
+                        Pastéis artesanais crocantes e recheados de verdade desde 2018 no Centro de Caxias do Sul. Tradição gastronômica da Serra Gaúcha.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="color: #FFFFFF; font-size: 1rem; margin-bottom: 14px;">Links Rápidos</h4>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem;">
+                        <li><a href="#cardapio" style="color: #94A3B8; text-decoration: none;">Início</a></li>
+                        <li><a href="#cardapio" style="color: #94A3B8; text-decoration: none;">Cardápio Completo</a></li>
+                        <li><a href="#sobre" style="color: #94A3B8; text-decoration: none;">Nossa História</a></li>
+                        <li><a href="#contato" style="color: #94A3B8; text-decoration: none;">Localização & Horários</a></li>
+                        <li><a href="proposta.html" style="color: #F59E0B; text-decoration: none; font-weight: 700;">✦ Proposta Comercial do Site</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: #FFFFFF; font-size: 1rem; margin-bottom: 14px;">Contato Oficial</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 10px;">
+                        📍 Rua Bento Gonçalves, 880 • Centro<br>
+                        📞 (54) 3208-3933<br>
+                        📱 Instagram: @buonapastelaria
+                    </p>
+                    <p style="font-size: 0.82rem; color: #64748B;">
+                        BUONA PASTELARIA LTDA • CNPJ: 30.637.779/0001-11
+                    </p>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; text-align: center; font-size: 0.84rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+                <div>© 2026 Buona Pastelaria Artesanal. Todos os direitos reservados.</div>
+                <div>
+                    Tecnologia por <a href="https://oniralabs.com.br" target="_blank" style="color: #F59E0B; font-weight: 800; text-decoration: none;">Onira Labs</a> • Canal Onira Flow
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ONIRA PROPOSAL WIDGET (MASTER TEMPLATE COMPONENT) -->
+    <div class="onira-cta" id="onira-cta">
+        <a class="onira-cta-link" href="proposta.html" rel="nofollow">
+            <img src="assets/jeff-avatar.webp" alt="Jefferson Motta, Onira Labs" class="onira-cta-avatar" width="40" height="40">
+            <span class="onira-cta-text">
+                <span class="onira-cta-hook">Gostou do site?</span>
+                <span class="onira-cta-call">Saiba como funciona meu trabalho</span>
+            </span>
+        </a>
+        <button type="button" class="onira-cta-close" id="onira-cta-close" aria-label="Dispensar convite">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+
+    <!-- STICKY FLOATING MOBILE ORDER BAR -->
+    <div id="floating-cart-bar" class="floating-order-bar" onclick="window.openCart()">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 38px; height: 38px; background: rgba(15,23,42,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #EA580C;">
+                <i data-lucide="shopping-bag" style="width: 20px; height: 20px;"></i>
+            </div>
+            <div>
+                <div style="font-size: 0.78rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.5px;">Ver Pedido</div>
+                <div id="floating-cart-count" style="font-size: 0.95rem; font-weight: 800;">0 itens</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <div id="floating-cart-total" style="font-size: 1.15rem; font-weight: 900; font-family: 'Outfit', sans-serif;">R$ 0,00</div>
+            <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
+        </div>
+    </div>
+
+    <!-- ITEM DETAILS MODAL -->
+    <div id="item-modal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeItemModal()"><i data-lucide="x"></i></button>
+            <img id="modal-img" src="" alt="" class="modal-banner-img">
+            <div class="modal-content">
+                <h3 id="modal-title" class="modal-title"></h3>
+                <p id="modal-desc" class="modal-desc"></p>
+
+                <!-- Sizes (P / G) -->
+                <div id="modal-sizes-box" style="margin-bottom: 16px;"></div>
+
+                <!-- Observações -->
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 0.84rem; font-weight: 700; color: #475569; margin-bottom: 6px;">Observações para a cozinha (opcional):</label>
+                    <input type="text" id="modal-obs" placeholder="Ex: Sem orégano, bem passado, cortar ao meio..." style="width: 100%; padding: 10px 14px; border: 1px solid #E2E8F0; border-radius: 10px; font-family: inherit; font-size: 0.88rem; outline: none; box-sizing: border-box;">
+                </div>
+
+                <!-- Qty & Confirm -->
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #F1F5F9; padding-top: 16px;">
+                    <div style="display: flex; align-items: center; gap: 8px; background: #F1F5F9; border-radius: 10px; padding: 4px;">
+                        <button class="drawer-qty-btn" onclick="changeModalQty(-1)" style="width: 32px; height: 32px;">-</button>
+                        <span id="modal-qty" style="font-weight: 800; font-size: 1rem; min-width: 24px; text-align: center;">1</span>
+                        <button class="drawer-qty-btn" onclick="changeModalQty(1)" style="width: 32px; height: 32px;">+</button>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="confirmModalAddToCart()" style="flex: 1; padding: 12px 18px;">
+                        <span>Adicionar • </span>
+                        <span id="modal-total-btn-price">R$ 0,00</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Drawer (CLAEM UNIFIED STANDARD WITH BUONA BRANDING) -->
+    <div class="cart-drawer-overlay" id="cart-overlay" onclick="window.closeCart()"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <!-- Cart Fixed Header -->
+        <div class="cart-header">
+            <div class="cart-header-title">
+                <i data-lucide="shopping-bag"></i>
+                <span>Seu Pedido Buona</span>
+            </div>
+            <button type="button" class="btn-continue-shopping" onclick="window.closeCart()" aria-label="Continuar Escolhendo">
+                <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i>
+                <span>Continuar Escolhendo</span>
+            </button>
+        </div>
+        
+        <!-- Single Unified Scrollable Body -->
+        <div class="cart-body">
+            <!-- Cart Items Section -->
+            <div class="cart-section">
+                <div class="cart-section-title">Itens do Pedido</div>
+                <div id="cart-items-container" class="cart-items-container">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Delivery Type Toggle -->
+            <div class="cart-option-group">
+                <label>Forma de Entrega / Retirada:</label>
+                <div class="delivery-toggle">
+                    <button type="button" class="del-btn active" data-type="delivery">
+                        <i data-lucide="truck"></i> Delivery (R$ 5,00)
+                    </button>
+                    <button type="button" class="del-btn" data-type="retirada">
+                        <i data-lucide="store"></i> Retirada no Balcão
+                    </button>
+                </div>
+            </div>
+
+            <!-- Address / Customer Form -->
+            <div class="cart-option-group" id="address-box">
+                <label>Seus Dados para Entrega:</label>
+                <input type="text" id="cust-name" class="input-dark" placeholder="Seu Nome Completo" style="margin-bottom: 8px;">
+                <input type="text" id="cust-address" class="input-dark" placeholder="Endereço Completo de Entrega (Rua, Nº, Bairro, Compl)">
+            </div>
+
+            <!-- Payment Method Toggle -->
+            <div class="cart-option-group">
+                <label>Forma de Pagamento:</label>
+                <div class="payment-toggle">
+                    <button type="button" class="pay-btn active" data-pay="Pix (Chave Copia e Cola)">
+                        <i data-lucide="qr-code"></i> Pix
+                    </button>
+                    <button type="button" class="pay-btn" data-pay="Cartão de Crédito/Débito">
+                        <i data-lucide="credit-card"></i> Cartão
+                    </button>
+                    <button type="button" class="pay-btn" data-pay="Dinheiro">
+                        <i data-lucide="banknote"></i> Dinheiro
+                    </button>
+                </div>
+
+                <!-- Cash Change Box -->
+                <div id="cash-change-box" style="display: none; margin-top: 8px;">
+                    <input type="text" id="cash-change-val" class="input-dark" placeholder="Troco para quanto? Ex: R$ 50,00">
+                </div>
+
+                <!-- Pix Lock Info Box -->
+                <div id="pix-lock-box" class="pix-lock-box">
+                    <div class="pix-lock-title">
+                        <i data-lucide="shield-check"></i>
+                        <span>Chave Pix Oficial Buona Pastelaria</span>
+                    </div>
+                    <div style="font-family: monospace; font-size: 0.95rem; color: #FFFFFF; font-weight: 700; margin: 8px 0; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        CNPJ: 30.637.779/0001-11
+                    </div>
+                    <button type="button" class="btn-copy-pix" onclick="window.copyPixKey()" id="btn-copy-pix-key">
+                        <i data-lucide="copy"></i> <span>Copiar Chave Pix</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summary Breakdown -->
+            <div class="cart-summary">
+                <div class="summary-line">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="summary-line">
+                    <span>Taxa de Entrega:</span>
+                    <span id="cart-delivery-fee">R$ 5,00</span>
+                </div>
+                <div class="summary-line total">
+                    <span>Total Estimado:</span>
+                    <span id="cart-total-price">R$ 0,00</span>
+                </div>
+            </div>
+
+            <!-- Submit CTA -->
+            <button type="button" class="btn btn-whatsapp btn-block" onclick="window.sendWhatsAppOrder()" id="btn-send-whatsapp">
+                <i data-lucide="send"></i>
+                <span>Enviar Pedido via WhatsApp</span>
+            </button>
+
+            <!-- TECNOLOGIA BY ONIRA LABS SIGNATURE -->
+            <div class="onira-signature">
+                <span>Tecnologia por <strong>Onira Labs</strong></span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Modal de Confirmacao de Limpar Pedido -->
+    <div id="confirm-clear" class="confirm-overlay" hidden onclick="if(event.target===this)window.closeConfirmation()">
+        <div class="confirm-box" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+            <div class="confirm-icon">
+                <i data-lucide="trash-2"></i>
+            </div>
+            <h3 class="confirm-title" id="confirm-title">Limpar o pedido?</h3>
+            <p class="confirm-text" id="confirm-desc">Você vai remover <strong>0 itens</strong>, no valor de <strong>R$ 0,00</strong>.</p>
+            <p class="confirm-warning">Esta ação não pode ser desfeita.</p>
+            <div class="confirm-actions">
+                <button type="button" class="confirm-btn confirm-cancel" onclick="window.closeConfirmation()">Manter o pedido</button>
+                <button type="button" class="confirm-btn confirm-ok" onclick="window.aplicarLimpeza()">Sim, limpar tudo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
