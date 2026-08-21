@@ -925,17 +925,15 @@ window.copyPixKey = copyPixKey;
 // Send Order via WhatsApp (Claem Standard)
 function sendWhatsAppOrder() {
     if (cart.length === 0) {
-        showToast('🥟 <strong>Seu carrinho está vazio!</strong> Adicione um pastel antes de finalizar.', 'error');
+        alert('Seu carrinho está vazio! Adicione pelo menos um pastel antes de enviar.');
         return;
     }
 
-    const customerName = document.getElementById('cust-name') ? document.getElementById('cust-name').value.trim() : '';
-    const customerAddressInput = document.getElementById('cust-address');
+    const customerName = customerNameInput ? customerNameInput.value.trim() : '';
     const customerAddress = customerAddressInput ? customerAddressInput.value.trim() : '';
-    const cashChange = document.getElementById('cash-change-val') ? document.getElementById('cash-change-val').value.trim() : '';
 
     if (fulfillmentType === 'delivery' && !customerAddress) {
-        showToast('📍 <strong>Informe seu endereço de entrega</strong> ou selecione <strong>Retirada no Balcão</strong>!', 'error');
+        alert('Por favor, informe seu endereço completo para entrega.');
         if (customerAddressInput) {
             customerAddressInput.classList.add('input-error');
             customerAddressInput.focus();
@@ -949,37 +947,56 @@ function sendWhatsAppOrder() {
 
     const subtotal = cart.reduce((sum, i) => sum + ((Number(i.price) || 0) * (Number(i.quantity) || 0)), 0);
     const activeDeliveryFee = fulfillmentType === 'delivery' ? deliveryFee : 0;
-    const finalTotal = subtotal + activeDeliveryFee;
 
-    let msg = `🥟 *NOVO PEDIDO - BUONA PASTELARIA*\n`;
-    msg += `------------------------------------\n`;
-    msg += `📦 *Tipo:* ${fulfillmentType === 'delivery' ? '🛵 Delivery em Domicílio' : '🛍️ Retirada no Balcão'}\n`;
-    if (customerName) msg += `👤 *Cliente:* ${customerName}\n`;
-    if (fulfillmentType === 'delivery' && customerAddress) {
-        msg += `🏠 *Endereço:* ${customerAddress}\n`;
-    }
-    msg += `\n*🛒 ITENS DO PEDIDO:*\n`;
+    let msg = `${fulfillmentType === 'delivery' ? 'Entrega em domicílio' : 'Retirada no balcão'}
 
-    cart.forEach((i, idx) => {
+`;
+
+    cart.forEach(i => {
         const itemSum = (Number(i.price) || 0) * (Number(i.quantity) || 0);
-        msg += `${idx + 1}. *${i.title}*\n`;
-        msg += `   Qtd: ${i.quantity}x • R$ ${itemSum.toFixed(2).replace('.', ',')}\n`;
-        if (i.notes) msg += `   _Obs: ${i.notes}_\n`;
-        msg += `\n`;
+        msg += `*${i.quantity}x* ${i.title}
+`;
+        msg += `R$ ${itemSum.toFixed(2).replace('.', ',')}
+`;
+        if (i.notes) msg += `_Obs: ${i.notes}_
+`;
+        msg += `
+`;
     });
 
-    msg += `------------------------------------\n`;
-    msg += `💵 *Subtotal:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+    msg += `*Itens: R$ ${subtotal.toFixed(2).replace('.', ',')}*
+`;
     if (fulfillmentType === 'delivery') {
-        msg += `🛵 *Taxa de Entrega:* R$ ${activeDeliveryFee.toFixed(2).replace('.', ',')}\n`;
+        msg += activeDeliveryFee > 0 ? `Entrega: R$ ${activeDeliveryFee.toFixed(2).replace('.', ',')}
+` : `Entrega a combinar
+`;
     }
-    msg += `💰 *TOTAL FINAL:* R$ ${finalTotal.toFixed(2).replace('.', ',')}\n`;
-    msg += `💳 *Forma de Pagamento:* ${selectedPayment}\n`;
-    if (selectedPayment.toLowerCase().includes('dinheiro') && cashChange) {
-        msg += `🪙 *Troco para:* ${cashChange}\n`;
+    msg += `
+`;
+
+    if (customerName) msg += `*${customerName}*
+`;
+    if (fulfillmentType === 'delivery' && customerAddress) {
+        msg += `${customerAddress}
+`;
     }
-    msg += `------------------------------------\n`;
-    msg += `_Pedido gerado pelo Catálogo Online Buona Pastelaria_`;
+
+    const isCash = selectedPayment.toLowerCase().includes('dinheiro');
+    const isPix = selectedPayment.toLowerCase().includes('pix');
+
+    if (isPix) {
+        msg += `Pagamento em Pix — combinamos a chave por aqui
+`;
+    } else if (isCash) {
+        msg += `Pagamento em dinheiro — ${cashChange ? `troco para R$ ${cashChange}` : 'sem troco'}
+`;
+    } else {
+        msg += `Pagamento no cartão — favor levar a maquininha
+`;
+    }
+
+    msg += `
+_Enviado pelo site da Pastelaria Buona_`;
 
     const encoded = encodeURIComponent(msg);
     const url = `https://wa.me/${BUONA_WHATSAPP}?text=${encoded}`;
